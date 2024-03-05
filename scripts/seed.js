@@ -1,4 +1,5 @@
 const { db } = require('@vercel/postgres');
+
 const {
   invoices,
   customers,
@@ -7,6 +8,7 @@ const {
 } = require('../app/lib/placeholder-data.js');
 const bcrypt = require('bcrypt');
 
+process.env.POSTGRES_DEBUG = 'true';
 async function seedUsers(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
